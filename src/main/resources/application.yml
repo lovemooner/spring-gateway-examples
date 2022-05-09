@@ -1,0 +1,49 @@
+server:
+  port: 7010
+spring:
+  application:
+    name: 'spring-gateway-example'
+  profiles:
+    active: '@profiles.active@'
+
+#  redis:
+#    host: 192.168.0.106
+#    port: 6379
+#    password: 123456
+#    pool:
+#      max-active: 8
+#      max-wait: -1
+#      max-idle: 8
+#      min-idle: 0
+#    timeout: 1000
+#    database: 0
+  cloud:
+    gateway:
+      routes:
+        - id: blog
+          uri: https://nba.hupu.com
+          predicates:
+            # 匹配路径转发
+            - Path=/games
+          filters:
+            # 关键在下面一句，值为true则开启认证，false则不开启
+            # 这种配置方式和spring cloud gateway内置的GatewayFilterFactory一致
+            - MyLog=true
+
+        - id: MyPredicateFactoryTest
+          uri: https://bbs.hupu.com
+          predicates:
+              - MyPredicateFactory=/bbs
+
+
+
+#暴露的gateway端点
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+
+
+
