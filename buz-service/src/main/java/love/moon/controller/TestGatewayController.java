@@ -18,13 +18,13 @@ import javax.servlet.http.HttpServletRequest;
 @RequestMapping("/gw")
 public class TestGatewayController {
 
-    @GetMapping("/addRequestHeader1")
-    public String testAddRequestHeader1(HttpServletRequest request,String username) {
+    @GetMapping("/filter1")
+    public String testGatewayFilter1(HttpServletRequest request,String username,String password) {
         String param1 = request.getHeader("param1");
         log.info("param1:{}",param1);
 
         //AddRequestParameter
-        System.out.println("username:" + username);
+        log.info("username:{},password:{}" , username,password);
         return username;
     }
 
@@ -39,6 +39,11 @@ public class TestGatewayController {
         String param2 = request.getHeader("param2");
         log.info("param2:{}", param2);
         return param2;
+    }
+
+    @GetMapping("/prefix-path")
+    public String testPrefixPath() {
+        return "prefix-path";
     }
 
 }

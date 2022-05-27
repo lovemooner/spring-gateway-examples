@@ -29,14 +29,17 @@ spring:
             # 值为true则开启认证，false则不开启
             - MyLog=true
 
-        - id: AddRequestHeader1
+        - id: testGatewayFilter1
           uri: http://localhost:8080
           predicates:
-            - Path=/hello-demo/gw/addRequestHeader1
+            - Path=/hello-demo/gw/filter1
           filters:
-            - AddRequestHeader=param1,p1
-            - AddRequestParameter=username,zhangsan
-            - AddResponseHeader=encryption,false
+            - AddRequestHeader=param1,p1 #添加 header
+            - AddRequestParameter=username,zhangsan #添加一个请求参数
+            - AddResponseHeader=encryption,false #响应中增加一个 响应头。
+            - RemoveRequestHeader=x-token #需要移除的请求头
+            - RemoveResponseHeader=x-token #移除响应头
+            - RemoveRequestParameter=password #移除请求参数
 
         - id: AddRequestHeader2
           uri: http://localhost:8080
@@ -44,6 +47,13 @@ spring:
             - Path=/hello-demo/gw/addRequestHeader2/{userId}
           filters:
             - AddRequestHeader=param2,p2-{userId}
+
+        - id: PrefixPath1
+          uri: http://localhost:8080
+          predicates:
+            - Path=/gw/prefix-path
+          filters:
+            - PrefixPath=/hello-demo
 
         - uri: https://www.csdn.net
           predicates:
