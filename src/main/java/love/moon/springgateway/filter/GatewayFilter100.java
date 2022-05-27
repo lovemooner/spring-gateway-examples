@@ -9,12 +9,12 @@ import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Mono;
 
 /**
- * @author kk
+ * @author lovemooner
  * @date 2020/8/19 10:10
  */
 @Component
 @Slf4j
-public class GatewayFilterSample implements GatewayFilter, Ordered {
+public class GatewayFilter100 implements GatewayFilter, Ordered {
 
     private static final String REQUEST_TIME_BEGIN = "requestTimeBegin";
 

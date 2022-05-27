@@ -9,7 +9,7 @@ import org.springframework.web.server.ServerWebExchange;
 import java.util.function.Predicate;
 
 /**
- * @author kk
+ * @author lovemooner
  * @date 2020/8/18 15:12
  */
 @Component
@@ -26,7 +26,7 @@ public class MyPredicateFactory extends AbstractRoutePredicateFactory<MyPredicat
             @Override
             public boolean test(ServerWebExchange serverWebExchange) {
                 System.out.println(config.getPath());
-                System.out.println("test-------");
+                System.out.println("PredicateFactory test");
                 return false;
             }
         };

@@ -1,0 +1,9 @@
+server:
+  servlet:
+    context-path: /hello-demo
+
+
+logging:
+  level:
+    #打印SQL信息
+    love.moon.mapper: debug

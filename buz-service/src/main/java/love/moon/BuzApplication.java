@@ -1,16 +1,18 @@
-package love.moon.springgateway;
+package love.moon;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+
 /**
- * @author kk
- * @date 2020/8/12 14:53
+ * @auther lovemooner
+ * @date 2019/10/31 14:31
+ * @describe
  */
 @SpringBootApplication
-public class Application {
+public class BuzApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(Application.class);
+        SpringApplication.run(BuzApplication.class, args);
     }
 }

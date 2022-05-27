@@ -1,13 +1,13 @@
 package love.moon.springgateway.config;
 
-import love.moon.springgateway.filter.GatewayFilterSample;
+import love.moon.springgateway.filter.GatewayFilter100;
 import org.springframework.cloud.gateway.route.RouteLocator;
 import org.springframework.cloud.gateway.route.builder.RouteLocatorBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * @author kk
+ * @author lovemooner
  * @date 2020/8/19 11:10
  */
 @Configuration
@@ -23,7 +23,10 @@ public class RouteLocatorBuilderConfig {
     public RouteLocator myRoutes(RouteLocatorBuilder builder) {
         return builder.routes()
                 .route(p -> p.path("/cba")
-                        .filters(f -> f.filter(new GatewayFilterSample()).addResponseHeader("X-Response-Default-Foo", "Default-Bar"))
+                        .filters(f ->
+                                f.filter(new GatewayFilter100())
+                                .addResponseHeader("X-Response-Default-Foo", "Default-Bar")
+                        )
                         .uri("https://voice.hupu.com/"))
 //                .route(p -> p.predicate(exchange -> exchange.getRequest().getPath().subPath(0).toString().startsWith(("/my1/")))
 //                        .uri("http://httpbin.org:80"))

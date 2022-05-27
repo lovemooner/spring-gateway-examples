@@ -17,25 +17,37 @@ spring:
 #      min-idle: 0
 #    timeout: 1000
 #    database: 0
+
   cloud:
     gateway:
       routes:
-        - id: blog
-          uri: https://nba.hupu.com
-          predicates:
-            # 匹配路径转发
-            - Path=/games
+        - id: demo1  # 路由的标识，要求唯一，默认UUID，
+          uri: https://github.com # 目标地址
+          predicates:   #断言
+            - Path=/lovemooner/** # 请求路径满足Path指定的规则时，才转发
           filters:
-            # 关键在下面一句，值为true则开启认证，false则不开启
-            # 这种配置方式和spring cloud gateway内置的GatewayFilterFactory一致
+            # 值为true则开启认证，false则不开启
             - MyLog=true
 
-        - id: MyPredicateFactoryTest
-          uri: https://bbs.hupu.com
+        - id: AddRequestHeader1
+          uri: http://localhost:8080
           predicates:
-              - MyPredicateFactory=/bbs
+            - Path=/hello-demo/gw/addRequestHeader1
+          filters:
+            - AddRequestHeader=param1,p1
+            - AddRequestParameter=username,zhangsan
+            - AddResponseHeader=encryption,false
 
+        - id: AddRequestHeader2
+          uri: http://localhost:8080
+          predicates:
+            - Path=/hello-demo/gw/addRequestHeader2/{userId}
+          filters:
+            - AddRequestHeader=param2,p2-{userId}
 
+        - uri: https://www.csdn.net
+          predicates:
+              - MyPredicateFactory=/csdn
 
 #暴露的gateway端点
 management:
