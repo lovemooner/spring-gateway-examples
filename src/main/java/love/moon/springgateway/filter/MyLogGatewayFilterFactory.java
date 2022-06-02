@@ -25,12 +25,13 @@ public class MyLogGatewayFilterFactory extends AbstractGatewayFilterFactory<MyLo
 
     @Override
     public GatewayFilter apply(Config config) {
+        System.out.println("初始化自定义GatewayFilter");
         return (exchange, chain) -> {
             exchange.getAttributes().put(_TIME, System.currentTimeMillis());
             return chain.filter(exchange).then(
                     Mono.fromRunnable(() -> {
                         Long startTime = exchange.getAttribute(_TIME);
-                        log.info("MyGatewayFilterFactory,请求地址：{},消耗时间：{}ms", exchange.getRequest().getURI(), System.currentTimeMillis() - startTime);
+                        log.info("自定义GatewayFilter,请求地址：{},消耗时间：{}ms", exchange.getRequest().getURI(), System.currentTimeMillis() - startTime);
                     })
             );
         };

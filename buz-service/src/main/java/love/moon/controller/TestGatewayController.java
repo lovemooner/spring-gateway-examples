@@ -25,7 +25,7 @@ public class TestGatewayController {
 
         //AddRequestParameter
         log.info("username:{},password:{}" , username,password);
-        return username;
+        return "filter1 response";
     }
 
     /**
@@ -44,6 +44,11 @@ public class TestGatewayController {
     @GetMapping("/prefix-path")
     public String testPrefixPath() {
         return "prefix-path";
+    }
+
+    @GetMapping("/strip-path")
+    public String testStripPrefix() {
+        return "strip-path";
     }
 
 }

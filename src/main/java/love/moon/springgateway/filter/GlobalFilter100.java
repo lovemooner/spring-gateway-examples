@@ -9,6 +9,8 @@ import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Mono;
 
 /**
+ * GlobalFilter和GatewayFilter有一样的接口定义，只不过GlobalFilter会作用于所有路由。
+ *
  * @author lovemooner
  * @date 2020/8/19 10:20
  */
