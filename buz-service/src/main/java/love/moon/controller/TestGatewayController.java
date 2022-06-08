@@ -25,7 +25,7 @@ public class TestGatewayController {
 
         //AddRequestParameter
         log.info("username:{},password:{}" , username,password);
-        return "filter1 response";
+        return "filter1 resp";
     }
 
     /**

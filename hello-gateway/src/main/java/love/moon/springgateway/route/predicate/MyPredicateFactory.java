@@ -17,7 +17,7 @@ import java.util.function.Predicate;
 @Component
 public class MyPredicateFactory extends AbstractRoutePredicateFactory<MyPredicateFactory.Config> {
 
-    public MyPredicateFactory(){
+    public MyPredicateFactory() {
         super(Config.class);
     }
 
@@ -27,7 +27,7 @@ public class MyPredicateFactory extends AbstractRoutePredicateFactory<MyPredicat
 
             @Override
             public boolean test(ServerWebExchange serverWebExchange) {
-                log.info("config",config);
+                log.info("config", config);
                 System.out.println("PredicateFactory test");
                 return false;
             }
@@ -35,7 +35,8 @@ public class MyPredicateFactory extends AbstractRoutePredicateFactory<MyPredicat
     }
 
     @Data
-    static class Config{
+    static class Config {
         private String path;
     }
+
 }

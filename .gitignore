@@ -1,5 +1,0 @@
-#过滤文件夹target,.idea
-target
-/.idea
-*.iml
-log

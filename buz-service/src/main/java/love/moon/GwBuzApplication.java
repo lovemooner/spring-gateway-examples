@@ -10,9 +10,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @describe
  */
 @SpringBootApplication
-public class BuzApplication {
+public class GwBuzApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(BuzApplication.class, args);
+        SpringApplication.run(GwBuzApplication.class, args);
     }
 }
